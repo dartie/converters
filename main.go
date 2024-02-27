@@ -14,7 +14,7 @@ import (
 
 // Convert markdown text to html
 func MdToHTML(mdContent string, title string, htmlFullpath string) string {
-	htmlArticle := mdToHTMLBody(mdContent)
+	htmlArticle := MdToHTMLBody(mdContent)
 
 	htmlContent := fmt.Sprintf(`<!DOCTYPE html>
 <html lang="en">
