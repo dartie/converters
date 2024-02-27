@@ -13,7 +13,7 @@ import (
 )
 
 // Convert markdown text to html
-func mdToHTML(mdContent string, title string, htmlFullpath string) string {
+func MdToHTML(mdContent string, title string, htmlFullpath string) string {
 	htmlArticle := mdToHTMLBody(mdContent)
 
 	htmlContent := fmt.Sprintf(`<!DOCTYPE html>
@@ -48,7 +48,7 @@ func mdToHTML(mdContent string, title string, htmlFullpath string) string {
 }
 
 // Get HTML body from markdown file
-func mdToHTMLBody(md string) string {
+func MdToHTMLBody(md string) string {
 	// create markdown parser with extensions
 	extensions := markdownParser.CommonExtensions | markdownParser.AutoHeadingIDs | markdownParser.NoEmptyLineBeforeBlock
 	p := markdownParser.NewWithExtensions(extensions)
@@ -64,7 +64,7 @@ func mdToHTMLBody(md string) string {
 
 // Converts HTML to PDF using weasyprint
 // (requires to be installed with "pip install weasyprint")
-func htmlToPdf(htmlFullpath string, pdfFullpath string) {
+func HtmlToPdf(htmlFullpath string, pdfFullpath string) {
 	cmd := exec.Command("weasyprint", "-p", htmlFullpath, pdfFullpath)
 	cmd.Dir = filepath.Dir(htmlFullpath)
 	output, err := cmd.CombinedOutput()
